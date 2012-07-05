@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="system" method="upgrade">
+	<name>Synk - WebLinks</name>
+	<version>3.1.1</version>
+	<creationDate>April 2010</creationDate>
+	<author>Dioscouri Design</author>
+	<authorEmail>info@dioscouri.com</authorEmail>
+	<authorUrl>http://www.dioscouri.com</authorUrl>
+	<copyright>2010 Dioscouri.com</copyright>
+	<license>GNU General Public License v2</license>
+	<description>PLG_WEBLINKS_SYNK_DESC</description>
+	
+	<files>
+		<filename plugin="synk_weblinks">synk_weblinks.php</filename>	
+	</files>
+	
+	<languages>
+		<language tag="en-GB">languages/en-GB.plg_system_synk_weblinks.ini</language>
+	</languages>
+	
+	<params>
+		
+    </params>
+    
+</install>

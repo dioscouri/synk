@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="content" method="upgrade">
+	<name>Content - Synk</name>
+	<version>3.1.1</version>
+	<creationDate>April 2010</creationDate>
+	<author>Dioscouri Design</author>
+	<authorEmail>info@dioscouri.com</authorEmail>
+	<authorUrl>http://www.dioscouri.com</authorUrl>
+	<copyright>2010 Dioscouri.com</copyright>
+	<license>GNU General Public License v2</license>
+	<description>PLUGINDESC</description>
+	
+	<files>
+		<filename plugin="synk">synk.php</filename>	
+	</files>
+	
+	<languages>
+		<language tag="en-GB">languages/en-GB.plg_content_synk.ini</language>
+	</languages>
+
+	<params>
+		<param name="articles_all" type="radio" default="1" label="All Articles" description="All Articles Desc">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</param>
+		<param name="articles_list" type="textarea" default="" label="Articles List" description="Articles List Desc" rows="5" cols="30" />
+		
+		<param type="spacer" />
+		<param name="articles_frontpage" type="radio" default="1" label="Articles Frontpage" description="Articles Frontpage Desc">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</param>
+		
+		<param type="spacer" />
+		<param name="categories_all" type="radio" default="1" label="All Categories" description="All Categories Desc">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</param>
+		<param name="categories_list" type="textarea" default="" label="Categories List" description="Categories List Desc" rows="5" cols="30" />
+
+		<param type="spacer" />
+		<param name="sections_all" type="radio" default="1" label="All Sections" description="All Sections Desc">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</param>
+		<param name="sections_list" type="textarea" default="" label="Sections List" description="Sections List Desc" rows="5" cols="30" />
+    </params>	
+	
+</install>

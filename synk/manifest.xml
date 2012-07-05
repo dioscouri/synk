@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5" method="upgrade">
+    <name>Synk</name>
+    <version>3.1.1</version>
+    <creationDate>April 2010</creationDate>
+    <author>Dioscouri.com</author>
+    <authorEmail>info@dioscouri.com</authorEmail>
+    <authorUrl>http://www.dioscouri.com</authorUrl>
+    <copyright>2010 Dioscouri.com</copyright>
+    <copyrightHolder>Dioscouri.com</copyrightHolder>
+    <license>GNU General Public License v2</license>
+    <description>Synk is a Database Synchronization extension for Joomla!</description>
+
+	<!-- Application/site -->    
+	<!-- None -->
+	
+	<languages>
+		<language tag="en-GB">languages/site/en-GB.com_synk.ini</language>
+	</languages>
+	
+	<!-- Application/administrator -->
+	<administration>
+		<menu img="../media/com_synk/images/synk_16.png">Synk</menu>
+
+		<files folder="admin">
+			<file>synk.php</file>
+			<file>controller.php</file>
+			<file>defines.php</file>
+			<file>index.html</file>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>install</folder>
+			<folder>library</folder>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+
+		<languages>
+			<language tag="en-GB">languages/admin/en-GB.com_synk.ini</language>
+		</languages>
+	</administration>
+	
+	<!-- Installation -->
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install/install.sql</file>
+		</sql>
+	</install>
+	
+	<installfile>install/install.php</installfile>
+	<uninstallfile>install/uninstall.php</uninstallfile>
+
+	<!--  Media -->
+	<media destination="com_synk" folder="media">
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>libchart</folder>
+	</media>
+		
+	<!-- Modules -->
+	<modules>
+	<!-- <module module="mod_synk_whatever" client="administrator"/> -->
+	</modules> 
+
+	<!-- Plugins -->
+	<plugins>
+		<plugin plugin="synk_plugin_categories" element="synk_categories" group="system"  />
+        <plugin plugin="synk_plugin_cb" element="synkcb" group="user"  />
+        <plugin plugin="synk_plugin_content" element="synk" group="content"  />
+		<plugin plugin="synk_plugin_contentbatch" element="synk_content" group="system"  />
+		<plugin plugin="synk_plugin_eventlist" element="synk_eventlist" group="system"  />
+		<plugin plugin="synk_plugin_phpbb3" element="synkphpbb3" group="user"  />
+        <plugin plugin="synk_plugin_sections" element="synk_sections" group="system"  />
+		<plugin plugin="synk_plugin_user" element="synk" group="user"  />
+		<plugin plugin="synk_plugin_weblinks" element="synk_weblinks" group="system"  />
+        <!--  Disabled for now -->
+        <!-- <plugin plugin="synk_plugin_system" element="synk" group="system"  /> -->
+		<!-- <plugin plugin="synk_plugin_usermeta" element="synkusermeta" group="user"  /> -->
+        <!--  Coming Soon -->
+        <!-- <plugin plugin="sync_plugin_xmlrpc" element="sync" group="xmlrpc"  /> -->
+	</plugins> 
+	
+    <!-- EXTRAS COMING SOON -->
+    <!-- 
+	<extras>
+		<extra name="JDatabaseXmlRpc" element="xmlrpc" destination="libraries.joomla.database.database" file="xmlrpc.php" />
+	</extras>
+	-->	
+</install>

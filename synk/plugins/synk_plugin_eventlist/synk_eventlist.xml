@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="system" method="upgrade">
+	<name>Synk - Eventlist</name>
+	<version>3.1.1</version>
+	<creationDate>April 2010</creationDate>
+	<author>Dioscouri Design</author>
+	<authorEmail>info@dioscouri.com</authorEmail>
+	<authorUrl>http://www.dioscouri.com</authorUrl>
+	<copyright>2010 Dioscouri.com</copyright>
+	<license>GNU General Public License v2</license>
+	<description>PLG_EVENTLIST_SYNK_DESC</description>
+	
+	<files>
+		<filename plugin="synk_eventlist">synk_eventlist.php</filename>	
+	</files>
+	
+	<languages>
+		<language tag="en-GB">languages/en-GB.plg_system_synk_eventlist.ini</language>
+	</languages>
+	
+	<params>
+		<param name="events" type="radio" default="1" label="Synk Events" description="Synk All Events">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</param>
+		<param name="venues" type="radio" default="1" label="Synk Venues" description="Synk All Venues">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</param>
+		<param name="categories" type="radio" default="1" label="Synk Categories" description="Synk All Categories">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</param>
+		<param name="groups" type="radio" default="1" label="Synk Groups" description="Synk All Groups">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</param>
+    </params>
+    
+</install>

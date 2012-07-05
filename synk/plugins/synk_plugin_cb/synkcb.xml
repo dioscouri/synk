@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="user" method="upgrade">
+	<name>Synk CB - User</name>
+	<version>3.1.1</version>
+	<creationDate>April 2010</creationDate>
+	<author>Dioscouri Design</author>
+	<authorEmail>info@dioscouri.com</authorEmail>
+	<authorUrl>http://www.dioscouri.com</authorUrl>
+	<copyright>2010 Dioscouri.com</copyright>
+	<license>GNU General Public License v2</license>
+	<description>PLG_USER_SYNKCB</description>
+	
+	<files>
+		<filename plugin="synkcb">synkcb.php</filename>	
+	</files>
+	
+	<languages>
+		<language tag="en-GB">languages/en-GB.plg_user_synkcb.ini</language>
+	</languages>
+
+	<params>
+		<param name="synk_mode" type="list" default="2" label="Synk Mode" description="Synk Mode Desc">
+			<option value="0">By Username Only</option>
+			<option value="1">By Username first, then User ID</option>
+			<option value="2">By User ID Only</option>
+			<option value="3">By User ID first, then by Username</option>
+		</param>
+		
+		<param type="spacer" />
+		<param name="exceptions_list" type="textarea" default="" label="Exceptions List" description="Exceptions List Desc" rows="5" cols="30" />
+    </params>
+		
+</install>

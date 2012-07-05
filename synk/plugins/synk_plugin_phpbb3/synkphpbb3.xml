@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="user" method="upgrade">
+	<name>Synk - phpBB3</name>
+	<version>3.1.1</version>
+	<creationDate>April 2010</creationDate>
+	<author>Dioscouri Design</author>
+	<authorEmail>info@dioscouri.com</authorEmail>
+	<authorUrl>http://www.dioscouri.com</authorUrl>
+	<copyright>2010 Dioscouri.com</copyright>
+	<license>GNU General Public License v2</license>
+	<description>PHPBB3_PLUGINDESC</description>
+	
+	<files>
+		<filename plugin="synkphpbb3">synkphpbb3.php</filename>	
+	</files>
+	
+	<languages>
+		<language tag="en-GB">languages/en-GB.plg_user_synkphpbb3.ini</language>
+	</languages>
+
+	<params>
+		<param name="table_prefix" type="text" default="phpbb_" label="Table Prefix" description="Table Prefix Desc" />
+		
+		<param type="spacer" />
+		<param name="exceptions_list" type="textarea" default="admin" label="Exceptions List" description="Exceptions List Desc" rows="5" cols="30" />
+    </params>
+		
+</install>

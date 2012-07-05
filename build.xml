@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ An ant build file for joomla install packages
+ 
+ @author 	Dioscouri Design
+ @link 	http://www.dioscouri.com
+ @copyright Copyright (C) 2007 Dioscouri Design. All rights reserved.
+ @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
+-->
+<project name="synk" default="build" basedir=".">
+	<description>Ant Build File for Joomla</description>
+
+	<!-- load variables from config file -->
+	<property name="cfg.configFile" location="antconfig.txt" />
+	<loadproperties srcfile="${cfg.configFile}" />
+
+	<!--config file values
+	cfg.name=paket
+	cfg.versionDir=v1_50
+	cfg.buildDir=packages
+	cfg.localhostRoot=../../www
+	cfg.xmlfile=files.txt
+	
+	ftp.server=
+	ftp.user=
+	ftp.password=
+	ftp.dir= 	
+	-->
+
+	<!-- auto values but should be checked -->
+	<property name="cfg.comName" value="${cfg.name}" />
+	<property name="cfg.comDir" value="${basedir}/${cfg.comName}" />
+	<property name="cfg.buildVersionDir" value="${cfg.buildDir}" />
+	<property name="cfg.adminFilesDir" location="${cfg.comDir}/admin" />
+	<property name="cfg.siteFilesDir" location="${cfg.comDir}/site" />
+	<property name="cfg.extensionsDir" location="${basedir}/extensions" />
+	<property name="cfg.mediaFilesDir" location="${cfg.comDir}/media" />
+	<property name="cfg.adminLangDir" location="${cfg.comDir}/languages/admin" />
+	<property name="cfg.siteLangDir" location="${cfg.comDir}/languages/site" />
+	
+	<!-- some settings that are currently unused -->
+	<property name="cfg.addversion" value="true" />
+	<property name="cfg.versionprefix" value="v" />
+	<property name="cfg.adddate" value="true" />
+	<property name="cfg.datefmt" value="yyyy-MM-dd" />
+	<property name="cfg.dateloc" value="en,UK" />
+
+	<target name="build" depends="clean, init, build_component, info" />
+
+	<target name="init" description="creates nessecary directory to build with">
+		<mkdir dir="${cfg.buildVersionDir}" />
+		<mkdir dir="${cfg.buildVersionDir}/plugins" />
+		<mkdir dir="${cfg.buildVersionDir}/modules" />
+		<mkdir dir="${cfg.buildVersionDir}/components" />
+		<mkdir dir="${cfg.extensionsDir}" />
+	</target>
+
+	<target name="build_component" depends="update_extensions" description="packages the final component file">
+		<zip destfile="${cfg.buildVersionDir}/components/${cfg.comName}.zip" basedir="${cfg.comDir}" />
+	</target>
+
+	<target name="build_plugins" description="packages any plugins">
+		<!-- add all plugin directories here -->
+		<!-- EX: <zip destfile="${cfg.buildVersionDir}/plugins/aplugin.zip" basedir="${cfg.versionDir}/aplugin" /> -->
+		<!-- 		<zip destfile="${cfg.buildVersionDir}/plugins/billets_plugin_ambrasubs.zip" basedir="${cfg.versionDir}/billets_plugin_ambrasubs" /> -->
+	</target>
+
+	<target name="build_modules" description="packages any modules">
+		<!-- add all module directories here -->
+		<!-- EX: <zip destfile="${cfg.buildVersionDir}/modules/amodule.zip" basedir="${cfg.versionDir}/amodule" /> -->
+	</target>
+
+	<target name="update_extensions" depends="build_plugins, build_modules" description="copies fresh builds of plugins and extensions to the admin/extensions folder">
+		<copy todir="${cfg.extensionsDir}" overwrite="true">
+			<fileset dir="${cfg.buildVersionDir}/plugins" />
+		</copy>
+		<copy todir="${cfg.extensionsDir}" overwrite="true">
+			<fileset dir="${cfg.buildVersionDir}/modules" />
+		</copy>
+	</target>
+
+	<target name="info" description="prints information">
+		<echo message="Project:			${cfg.name}" />
+		<tstamp>
+			<format property="buildtime" pattern="yyyy-MM-dd'T'HH:mm:ss" />
+		</tstamp>
+		<echo message="Buildtime:	${buildtime}" />
+	</target>
+
+	<target name="clean" description="Destroys all generated files and dirs.">
+		<delete dir="${cfg.buildVersionDir}" />
+		<delete dir="packages" />
+		<delete dir="${cfg.extensionsDir}" />
+		<delete file="${cfg.xmlfile}" />
+	</target>
+
+	<target name="update_localhost" description="attemps to update files on localhost server with files from working directory">
+		<copy file="${cfg.comDir}/manifest.xml" todir="${cfg.localhostRoot}/administrator/components/com_${cfg.comName}" />
+		
+		<copy todir="${cfg.localhostRoot}/administrator/components/com_${cfg.comName}" overwrite="true">
+			<fileset dir="${cfg.adminFilesDir}" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/media/com_${cfg.comName}" overwrite="true">
+			<fileset dir="${cfg.mediaFilesDir}" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset dir="${cfg.adminLangDir}" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/language/en-GB" overwrite="true">
+			<fileset dir="${cfg.siteLangDir}" />
+		</copy>
+		
+		<!-- Content plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/content" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_content/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_content/languages/en-GB.*" />
+		</copy>
+		
+		<!-- ContentBatch plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_contentbatch/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_contentbatch/languages/en-GB.*" />
+		</copy>
+		
+		<!-- User plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/user" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_user/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_user/languages/en-GB.*" />
+		</copy>
+		
+		<!-- CB User plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/user" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_cb/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_cb/languages/en-GB.*" />
+		</copy>
+		
+		<!-- phpBB3 User plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/user" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_phpbb3/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_phpbb3/languages/en-GB.*" />
+		</copy>
+		
+		<!-- Eventlist plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_eventlist/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_eventlist/languages/en-GB.*" />
+		</copy>
+			
+		<!-- Weblinks plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_weblinks/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_weblinks/languages/en-GB.*" />
+		</copy>
+		
+		<!-- Sections plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_sections/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_sections/languages/en-GB.*" />
+		</copy>
+		
+		<!-- System plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_system/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_system/languages/en-GB.*" />
+		</copy>
+		
+		<!-- Eventlist plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_categories/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_categories/languages/en-GB.*" />
+		</copy>
+		
+		<!-- Usermeta plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/user" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_usermeta/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_usermeta/languages/en-GB.*" />
+		</copy>
+		
+		<!-- AmbraJomSocial plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/ambra" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_ambrajomsocial/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_ambrajomsocial/languages/en-GB.*" />
+		</copy>
+		
+		<!-- JomSocialAmbra plugin -->
+		<copy todir="${cfg.localhostRoot}/plugins/community" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_jomsocialambra/*.*" />
+		</copy>
+		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
+			<fileset file="${cfg.comDir}/synk_plugin_jomsocialambra/languages/en-GB.*" />
+		</copy>
+		
+		
+	</target>
+
+	<target name="upload" description="attempts to upload build file to ftp server">
+		<fileset id="ftp.upload.fileset" dir="${cfg.buildVersionDir}/components">
+			<include name="*.zip" />
+		</fileset>
+
+		<echo>FTP target is ${ftp.server}</echo>
+		<ftp server="${ftp.server}" userid="${ftp.user}" password="${ftp.password}" action="put" remotedir="${ftp.dir}">
+			<fileset refid="ftp.upload.fileset" />
+		</ftp>
+	</target>
+
+	<target name="build_xml" description="builds an xml listing of all the files in the working copy">
+		<fileset id="site" dir="${cfg.siteFilesDir}" />
+		<echo message="${line.separator}&lt;files folder=&quot;site&quot;&gt;${line.separator}&lt;filename&gt;" file="${cfg.xmlfile}" append="false" />
+		<echo-fileset filesetref="site" />
+		<echo message="&lt;/filename&gt;${line.separator}&lt;/files&gt;${line.separator}" file="${cfg.xmlfile}" append="true" />
+
+		<fileset id="admin" dir="${cfg.adminFilesDir}" />
+		<echo message="${line.separator}&lt;files folder=&quot;admin&quot;&gt;${line.separator}&lt;filename&gt;" file="${cfg.xmlfile}" append="true" />
+		<echo-fileset filesetref="admin" />
+		<echo message="&lt;/filename&gt;${line.separator}&lt;/files&gt;${line.separator}" file="${cfg.xmlfile}" append="true" />
+
+		<replace file="${cfg.xmlfile}" token="${cfg.siteFilesDir}/" value="" />
+		<replace file="${cfg.xmlfile}" token="${cfg.adminFilesDir}/" value="" />
+	</target>
+
+	<macrodef name="echo-fileset" description="creates a printable directory listing">
+		<attribute name="filesetref" />
+		<sequential>
+			<pathconvert pathsep="&lt;/filename&gt;${line.separator}&lt;filename&gt;" property="@{filesetref}.echopath">
+				<path>
+					<fileset refid="@{filesetref}" />
+				</path>
+			</pathconvert>
+			<echo message="${@{filesetref}.echopath}" file="${cfg.xmlfile}" append="true" />
+		</sequential>
+	</macrodef>
+</project>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="xmlrpc" method="upgrade">
+    <name>Synk - XML RPC</name>
+    <version>3.1.1</version>
+    <creationDate>April 2010</creationDate>
+    <author>Dioscouri Design</author>
+    <authorEmail>info@dioscouri.com</authorEmail>
+    <authorUrl>http://www.dioscouri.com</authorUrl>
+    <copyright>2010 Dioscouri.com</copyright>
+    <license>GNU General Public License v2</license>
+	<description>Sync XML-RPC API</description>
+    
+	<files>
+		<filename plugin="sync">sync.php</filename>
+	</files>
+	
+</install>

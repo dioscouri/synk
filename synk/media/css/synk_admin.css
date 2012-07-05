@@ -1,0 +1,102 @@
+.icon-48-synk { 
+	background-image: url(../../../media/com_synk/images/synk.png); 
+	padding-left:135px !important;
+}
+
+/** toolbar icons **/
+.icon-32-switch { 
+	background-image: url(../../../media/com_synk/images/switch.png); 
+}
+
+.icon-32-savenew { 
+	background-image: url(../../../media/com_synk/images/icon-32-savenew.png); 
+}
+
+.icon-32-switch_f2 {
+	background-image: url(../../../administrator/images/switch_f2.png);
+}
+
+.icon-32-revert { 
+    background-image: url(../../../administrator/templates/khepri/images/toolbar/icon-32-revert.png); 
+}
+
+.icon-32-refresh { 
+    background-image: url(../../../administrator/templates/khepri/images/toolbar/icon-32-refresh.png); 
+}
+
+/** filter lines **/
+tr.filter div.range {
+    width: 100%;
+    text-align: left;
+}
+
+tr.filter div.range div.rangeline {
+    width: 100%;
+    white-space: nowrap;
+    padding-bottom: 2px;
+    text-align: right;
+}
+
+tr.filter div.range div.rangeline span.label {
+    text-align: left;
+}
+
+tr.filter div.range div.rangeline .input {
+    text-align: left;
+}
+ 
+/** notes **/
+.note 
+{
+    background-color: #FFFFDD;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: justify;
+    border: 1px solid #DDDDBB;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+.note_pink 
+{
+    background-color: #FDE8FD;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: justify;
+    border: 1px solid #FFCCCC;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+.note_green 
+{
+    background-color: #EBF6DF;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: justify;
+    border: 1px solid #289728;
+    border-spacing: 0px;
+    border-collapse: collapse;  
+}
+
+/** common **/
+span.href 
+{
+    cursor:pointer;
+    color: #3F9273;
+    text-decoration:none;
+    padding-left: 10px;
+    font-size: 12px; 
+    font-weight: bold;
+}
+
+span.href:hover 
+{
+    cursor:pointer;
+    color: #3F9273;
+    font-weight: bold;
+    text-decoration:underline;  
+}
