@@ -1,3 +1,4 @@
+!http://www.dioscouri.com/images/synk/synk.png!
 SYNK is a Joomla! Database Synchronization component
 
 h3. Project Overview
