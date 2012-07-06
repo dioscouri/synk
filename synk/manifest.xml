@@ -66,15 +66,15 @@
 
 	<!-- Plugins -->
 	<plugins>
-		<plugin plugin="synk_plugin_categories" element="synk_categories" group="system"  />
-        <plugin plugin="synk_plugin_cb" element="synkcb" group="user"  />
-        <plugin plugin="synk_plugin_content" element="synk" group="content"  />
-		<plugin plugin="synk_plugin_contentbatch" element="synk_content" group="system"  />
-		<plugin plugin="synk_plugin_eventlist" element="synk_eventlist" group="system"  />
-		<plugin plugin="synk_plugin_phpbb3" element="synkphpbb3" group="user"  />
-        <plugin plugin="synk_plugin_sections" element="synk_sections" group="system"  />
-		<plugin plugin="synk_plugin_user" element="synk" group="user"  />
-		<plugin plugin="synk_plugin_weblinks" element="synk_weblinks" group="system"  />
+		<plugin plugin="plugins/synk_plugin_categories" element="synk_categories" group="system"  />
+        <plugin plugin="plugins/synk_plugin_cb" element="synkcb" group="user"  />
+        <plugin plugin="plugins/synk_plugin_content" element="synk" group="content"  />
+		<plugin plugin="plugins/synk_plugin_contentbatch" element="synk_content" group="system"  />
+		<plugin plugin="plugins/synk_plugin_eventlist" element="synk_eventlist" group="system"  />
+		<plugin plugin="plugins/synk_plugin_phpbb3" element="synkphpbb3" group="user"  />
+        <plugin plugin="plugins/synk_plugin_sections" element="synk_sections" group="system"  />
+		<plugin plugin="plugins/synk_plugin_user" element="synk" group="user"  />
+		<plugin plugin="plugins/synk_plugin_weblinks" element="synk_weblinks" group="system"  />
         <!--  Disabled for now -->
         <!-- <plugin plugin="synk_plugin_system" element="synk" group="system"  /> -->
 		<!-- <plugin plugin="synk_plugin_usermeta" element="synkusermeta" group="user"  /> -->
