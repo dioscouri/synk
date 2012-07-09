@@ -11,15 +11,9 @@
 /** ensure this file is being included by a parent file */
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-JLoader::import( 'com_synk.tables._basexref', JPATH_ADMINISTRATOR.DS.'components' );
-
-class TableSynchronizationEvents extends SynkTableXref 
+class SynkTableSynchronizationEvents extends DSCTableXref 
 {
-	/** 
-	 * @param $db
-	 * @return unknown_type
-	 */
-	function TableSynchronizationEvents ( &$db ) 
+	function SynkTableSynchronizationEvents ( &$db ) 
 	{		
 		$tbl_key 	= 'synchronizationid';
 		$tbl_key2	= 'eventid';

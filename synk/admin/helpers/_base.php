@@ -35,7 +35,7 @@ class SynkHelperBase extends JObject
 
     function currency($amount)
     {
-        $config = SynkConfig::getInstance();
+        $config = Synk::getInstance();
 
         $num_decimals = $config->get('currency_num_decimals', '2');
         $thousands = $config->get('currency_thousands', ',');
@@ -49,7 +49,7 @@ class SynkHelperBase extends JObject
 
     function number($number)
     {
-        $config = SynkConfig::getInstance();
+        $config = Synk::getInstance();
 
         $thousands = $config->get('currency_thousands', ',');
         $decimal = $config->get('currency_decimal', '.');

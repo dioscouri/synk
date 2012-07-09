@@ -11,15 +11,11 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-JLoader::import( 'com_synk.views._base', JPATH_ADMINISTRATOR.DS.'components' );
+Synk::load( 'SynkViewBase', 'views.base' );
 
 class SynkViewDashboard extends SynkViewBase  
 {
-	/**
-	 * 
-	 * @param $tpl
-	 * @return unknown_type
-	 */
+    /*    
 	function display($tpl=null) 
 	{
 		require_once( JPATH_ADMINISTRATOR.DS.'components'.DS.'com_synk'.DS.'helpers'.DS.'_base.php' );
@@ -65,10 +61,6 @@ class SynkViewDashboard extends SynkViewBase
 		parent::display($tpl);
     }
     
-    /**
-     *
-     * @return unknown_type
-     */
     function stats_lastThirty()
     {
         $database = JFactory::getDBO();
@@ -131,10 +123,6 @@ class SynkViewDashboard extends SynkViewBase
 		$this->assign( 'logged_events', $logged_events );
     }
     
-     /**
-     *
-     * @return unknown_type
-     */
     function stats_today()
     {
     	$database = JFactory::getDBO();
@@ -189,10 +177,6 @@ class SynkViewDashboard extends SynkViewBase
 		$this->assign( 'logged_events', $logged_events );
     }
     
-     /**
-     *
-     * @return unknown_type
-     */
     function stats_yesterday()
     {
     	$database = JFactory::getDBO();
@@ -249,10 +233,6 @@ class SynkViewDashboard extends SynkViewBase
 		$this->assign( 'logged_events', $logged_events );
     }
     
-     /**
-     *
-     * @return unknown_type
-     */
     function stats_this_year()
     {
     	$database = JFactory::getDBO();
@@ -303,13 +283,6 @@ class SynkViewDashboard extends SynkViewBase
 		$this->assign( 'logged_events', $logged_events );
     }
     
-    /**
-     *
-     * @param unknown_type $data
-     * @param unknown_type $chart_title
-     * @param unknown_type $variable_name
-     * @return unknown_type
-     */
     function getChartBarDaily( $data, $chart_title, $variable_name, $type='countdata' )
     {
         JLoader::import( 'com_synk.libchart.classes.libchart', JPATH_SITE.DS.'media' );
@@ -346,14 +319,6 @@ class SynkViewDashboard extends SynkViewBase
         $this->assign( "$variable_name", $row );
     }
     
-    
-	/**
-     *
-     * @param unknown_type $data
-     * @param unknown_type $chart_title
-     * @param unknown_type $variable_name
-     * @return unknown_type
-     */
     function getChartBarHourly( $data, $chart_title, $variable_name, $type='countdata' )
     {
         JLoader::import( 'com_synk.libchart.classes.libchart', JPATH_SITE.DS.'media' );
@@ -389,5 +354,5 @@ class SynkViewDashboard extends SynkViewBase
 
         $this->assign( "$variable_name", $row );
     }
-   
+    */   
 }

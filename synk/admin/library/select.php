@@ -7,55 +7,8 @@
 * @link 		http://www.dioscouri.com
 */
 
-require_once( JPATH_SITE.DS.'libraries'.DS.'joomla'.DS.'html'.DS.'html'.DS.'select.php' );
-
-class SynkSelect extends JHTMLSelect
+class SynkSelect extends DSCSelect
 {
-	/**
-	* Generates a yes/no radio list
-	*
-	* @param string The value of the HTML name attribute
-	* @param string Additional HTML attributes for the <select> tag
-	* @param mixed The key that is selected
-	* @returns string HTML for the radio list
-	*/
-	public static function booleans( $selected, $name = 'filter_enabled', $attribs = array('class' => 'inputbox', 'size' => '1'), $idtag = null, $allowAny = false, $title='Select State', $yes = 'Enabled', $no = 'Disabled' )
-	{
-	    $list = array();
-		if($allowAny) {
-			$list[] =  self::option('', "- ".JText::_( $title )." -" );
-		}
-
-		$list[] = JHTML::_('select.option',  '0', JText::_( $no ) );
-		$list[] = JHTML::_('select.option',  '1', JText::_( $yes ) );
-		
-		return self::genericlist($list, $name, $attribs, 'value', 'text', $selected, $idtag );
-	}
-	
-    /**
-    * Generates range list
-    *
-    * @param string The value of the HTML name attribute
-    * @param string Additional HTML attributes for the <select> tag
-    * @param mixed The key that is selected
-    * @returns string HTML for the radio list
-    */
-    public static function range( $selected, $name = 'filter_range', $attribs = array('class' => 'inputbox', 'size' => '1'), $idtag = null, $allowAny = false, $title = 'Select Range' )
-    {
-        $list = array();
-        if($allowAny) {
-            $list[] =  self::option('', "- ".JText::_( $title )." -" );
-        }
-
-        $list[] = JHTML::_('select.option',  'today', JText::_( "Today" ) );
-        $list[] = JHTML::_('select.option',  'yesterday', JText::_( "Yesterday" ) );
-        //$list[] = JHTML::_('select.option',  'last_seven', JText::_( "Last Seven Days" ) );
-        $list[] = JHTML::_('select.option',  'last_thirty', JText::_( "Last Thirty Days" ) );
-        $list[] = JHTML::_('select.option',  'ytd', JText::_( "Year to Date" ) );
-
-        return self::genericlist($list, $name, $attribs, 'value', 'text', $selected, $idtag );
-    }
-	
 	/**
 	 * 
 	 * @param $selected
@@ -182,41 +135,6 @@ class SynkSelect extends JHTMLSelect
 		$model->setState( 'order', 'title' );
 		$model->setState( 'direction', 'ASC' );
 		$items = $model->getAll();
-		
-		if(!empty($items)){
-        	foreach (@$items as $item)
-        	{
-        		$list[] =  self::option( $item->id, JText::_($item->title), 'id', 'title' );
-        	}
-		}
-		return self::genericlist($list, $name, $attribs, 'id', 'title', $selected, $idtag );
- 	}
- 	
-	/**
-	 * 
-	 * @param $selected
-	 * @param $name
-	 * @param $attribs
-	 * @param $idtag
-	 * @param $allowAny
-	 * @return unknown_type
-	 */
-	public static function example($selected, $name = 'filter_exampleid', $attribs = array('class' => 'inputbox', 'size' => '1'), $idtag = null, $allowAny = false, $allowNone = false, $title = 'Select Example', $title_none = 'No Example' )
- 	{
-		// Build list
-        $list = array();
- 		if($allowAny) {
-			$list[] =  self::option('', "- ".JText::_( $title )." -", 'id', 'title' );
-		}
- 		if($allowNone) {
-			$list[] =  self::option('0', "- ".JText::_( $title_none )." -", 'id', 'title' );
-		}
-
-		JModel::addIncludePath( JPATH_ADMINISTRATOR.DS.'components'.DS.'com_synk'.DS.'models' );
-		$model = JModel::getInstance( 'Example', 'SynkModel' );
-		$model->setState( 'order', 'title' );
-		$model->setState( 'direction', 'ASC' );
-		$items = $model->getList();
 		
 		if(!empty($items)){
         	foreach (@$items as $item)

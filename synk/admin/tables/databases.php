@@ -11,18 +11,10 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-JLoader::import( 'com_synk.tables._base', JPATH_ADMINISTRATOR.DS.'components' );
-
-class TableDatabases extends SynkTable {
-/**
-	 * 
-	 * 
-	 * @param $db
-	 * @return unknown_type
-	 */
-	function TableDatabases ( &$db ) 
+class SynkTableDatabases extends DSCTable 
+{
+	function SynkTableDatabases ( &$db ) 
 	{
-		
 		$tbl_key 	= 'id';
 		$tbl_suffix = 'databases';
 		$this->set( '_suffix', $tbl_suffix );

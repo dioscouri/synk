@@ -11,7 +11,7 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-class SynkHelperTools 
+class SynkHelperTools extends DSCTools
 {
 	/**
 	 * Get the Synk plugins which should be configured in the Configuration menu of the Synk Component
@@ -26,8 +26,8 @@ class SynkHelperTools
 		$xml = new JSimpleXML;
 		$xml->loadFile(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_synk'.DS.'manifest.xml');
 		
-		$database =& JFactory::getDBO();
-		$language =& JFactory::getLanguage();
+		$database = JFactory::getDBO();
+		$language = JFactory::getLanguage();
 		
 		foreach($xml->document->plugins[0]->children() as $key => $plugin){
 			$attr = $plugin->attributes();
@@ -86,61 +86,4 @@ class SynkHelperTools
 		
 		return $synkPlugins;
 	}
-	
-	/**
-	 * 
-	 * @param $folder
-	 * @return unknown_type
-	 */
-	function getPlugins( $folder='Synk' )
-	{
-		$database = JFactory::getDBO();
-		
-		$order_query = " ORDER BY ordering ASC ";
-		$folder = strtolower( $folder );
-		
-		$query = "
-			SELECT 
-				* 
-			FROM 
-				#__plugins 
-			WHERE 1 
-			AND 
-				LOWER(`folder`) = '{$folder}'
-			{$order_query}
-		";
-			
-		$database->setQuery( $query );
-		$data = $database->loadObjectList();
-		
-		return $data;
-	}
-	
-	/**
-	 * 
-	 * @param $element
-	 * @param $eventName
-	 * @return unknown_type
-	 */
-	function hasEvent( $element, $eventName )
-	{
-		$success = false;
-		if (!$element || !is_object($element)) {
-			return $success;
-		}
-		
-		if (!$eventName || !is_string($eventName)) {
-			return $success;
-		}
-		
-		// Check if they have a particular event
-		$import 	= JPluginHelper::importPlugin( strtolower( 'Synk' ), $element->element );
-		$dispatcher	= JDispatcher::getInstance();
-		$result 	= $dispatcher->trigger( $eventName, array( $element ) );
-		if (in_array(true, $result, true)) {
-			$success = true;
-		}		
-		return $success;
-	}	
-	
 }

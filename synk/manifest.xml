@@ -10,17 +10,10 @@
     <copyrightHolder>Dioscouri.com</copyrightHolder>
     <license>GNU General Public License v2</license>
     <description>Synk is a Database Synchronization extension for Joomla!</description>
-
-	<!-- Application/site -->    
-	<!-- None -->
-	
-	<languages>
-		<language tag="en-GB">languages/site/en-GB.com_synk.ini</language>
-	</languages>
 	
 	<!-- Application/administrator -->
 	<administration>
-		<menu img="../media/com_synk/images/synk_16.png">Synk</menu>
+		<menu img="../media/com_synk/images/synk_16.png">COM_SYNK</menu>
 
 		<files folder="admin">
 			<file>synk.php</file>
@@ -36,27 +29,29 @@
 			<folder>views</folder>
 		</files>
 
-		<languages>
-			<language tag="en-GB">languages/admin/en-GB.com_synk.ini</language>
+		<languages folder="languages/admin">
+			<language tag="en-GB">en-GB.com_synk.ini</language>
+            <language tag="en-GB">en-GB.com_synk.sys.ini</language>
+            <language tag="en-GB">en-GB.com_synk.menu.ini</language>
 		</languages>
 	</administration>
 	
 	<!-- Installation -->
 	<install>
 		<sql>
-			<file charset="utf8" driver="mysql">install/install.sql</file>
+			<file>install.sql</file>
 		</sql>
 	</install>
 	
-	<installfile>install/install.php</installfile>
-	<uninstallfile>install/uninstall.php</uninstallfile>
+    <installfile>install.php</installfile>
+    <uninstallfile>uninstall.php</uninstallfile>
 
 	<!--  Media -->
 	<media destination="com_synk" folder="media">
 		<folder>css</folder>
 		<folder>images</folder>
 		<folder>js</folder>
-		<folder>libchart</folder>
+        <folder>menus</folder>
 	</media>
 		
 	<!-- Modules -->

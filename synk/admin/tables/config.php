@@ -11,14 +11,11 @@
 /** ensure this file is being included by a parent file */
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-JLoader::import( 'com_synk.tables._base', JPATH_ADMINISTRATOR.DS.'components' );
-
-class TableConfig extends SynkTable 
+class SynkTableConfig extends DSCTable 
 {
-
-	function TableConfig( &$db ) 
+	function SynkTableConfig( &$db ) 
 	{
-		$tbl_key 	= 'title';
+		$tbl_key 	= 'config_name';
 		$tbl_suffix = 'config';
 		$this->set( '_suffix', $tbl_suffix );
 		$name 		= 'synk';
@@ -28,7 +25,7 @@ class TableConfig extends SynkTable
 	
 	function store( $updateNulls = true) 
 	{
-		$k = 'id';
+		$k = 'config_id';
  
         if (intval( $this->$k) > 0 )
         {

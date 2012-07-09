@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `#__synk_config` (
   `checked_out_time` datetime NOT NULL,
   `value` text NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM ;
+) Engine=MyISAM ;
 
 CREATE TABLE IF NOT EXISTS `#__synk_databases` (
   `id` int(11) NOT NULL auto_increment,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `#__synk_databases` (
   `prefix` varchar(255) NOT NULL,
   `verified` tinyint(1) NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM ;
+) Engine=MyISAM ;
 
 
 CREATE TABLE IF NOT EXISTS `#__synk_logs` (
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `#__synk_logs` (
   `datetime` datetime NOT NULL,
   `success` tinyint(1) NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM  ;
+) Engine=MyISAM  ;
 
 
 CREATE TABLE IF NOT EXISTS `#__synk_s2e` (
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `#__synk_s2e` (
   `eventid` int(11) NOT NULL,
   `parameter` varchar(255) NOT NULL,
   PRIMARY KEY  (`synchronizationid`,`eventid`)
-) TYPE=MyISAM;
+) Engine=MyISAM;
 
 
 CREATE TABLE IF NOT EXISTS `#__synk_synchronizations` (
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `#__synk_synchronizations` (
   `limit_monthly` int(11) NOT NULL,
   `limit_yearly` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM ;
+) Engine=MyISAM ;
 
 
 CREATE TABLE IF NOT EXISTS `#__synk_events` (
@@ -83,4 +83,4 @@ CREATE TABLE IF NOT EXISTS `#__synk_events` (
   `type` tinyint(1) NOT NULL default '0',
   `published` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id`)
-) TYPE=MyISAM ;
+) Engine=MyISAM ;

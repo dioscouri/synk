@@ -5,7 +5,7 @@
 		$img_path = "../media/com_synk/images";
 
 		$url = "http://www.dioscouri.com/";
-		if ($amigosid = SynkConfig::getInstance()->get( 'amigosid', '' ))
+		if ($amigosid = Synk::getInstance()->get( 'amigosid', '' ))
 		{
 			$url .= "?amigosid=".$amigosid;
 		}

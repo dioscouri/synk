@@ -11,19 +11,10 @@
 /** ensure this file is being included by a parent file */
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-JLoader::import( 'com_synk.tables._base', JPATH_ADMINISTRATOR.DS.'components' );
-
-class TableTools extends SynkTable 
+class SynkTableTools extends DSCTable 
 {
-	/**
-	 * Could this be abstracted into the base?
-	 * 
-	 * @param $db
-	 * @return unknown_type
-	 */
-	function TableTools ( &$db ) 
+	function SynkTableTools ( &$db ) 
 	{
-		
 		$tbl_key 	= 'id';
 		$tbl_suffix = 'plugins';
 		$this->set( '_suffix', $tbl_suffix );
@@ -31,10 +22,4 @@ class TableTools extends SynkTable
 		
 		parent::__construct( "#__{$tbl_suffix}", $tbl_key, $db );	
 	}
-	
-	function check()
-	{		
-		return true;
-	}
-
 }

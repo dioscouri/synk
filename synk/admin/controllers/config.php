@@ -32,7 +32,7 @@ class SynkControllerConfig extends SynkController
 		$error = false;
 		$errorMsg = "";
 		$model 	= $this->getModel( $this->get('suffix') );
-		$config = SynkConfig::getInstance();
+		$config = Synk::getInstance();
 		$properties = $config->getProperties();
 		 
 		foreach (@$properties as $key => $value ) 

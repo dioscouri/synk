@@ -1,5 +1,5 @@
 <?php defined('_JEXEC') or die('Restricted access'); ?>
-<?php JHTML::_('script', 'synk.js', 'media/com_synk/js/'); ?>
+<?php JHTML::_('script', 'common.js', 'media/com_synk/js/'); ?>
 <?php $state = @$this->state; ?>
 <?php $form = @$this->form; ?>
 <?php $items = @$this->items; ?>

@@ -18,7 +18,7 @@ class SynkModelDashboard extends SynkModelBase
 	function getTable()
 	{
 		JTable::addIncludePath( JPATH_ADMINISTRATOR.DS.'components'.DS.'com_synk'.DS.'tables' );
-		$table = JTable::getInstance( 'Config', 'Table' );
+		$table = JTable::getInstance( 'Config', 'SynkTable' );
 		return $table;
 	}	
 }

@@ -10,267 +10,80 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-class Synk extends JObject
+class Synk extends DSC
 {
-    static $_version        = '3.1.1';
-    static $_copyrightyear  = '2010';
-    static $_name           = 'synk';
+    protected $_name           = 'synk';
+    protected $_version        = '3.1.1';
+    protected $_build          = 'r100';
+    protected $_versiontype    = '';
+    protected $_copyrightyear  = '2012';
+    protected $_min_php		= '5.3';
 
+    public $show_linkback							= '1';
+    public $page_tooltip_dashboard_disabled		= '0';
+    public $page_tooltip_synchronizations_disabled = '0';
+    public $page_tooltip_databases_disabled		= '0';
+    public $page_tooltip_events_disabled			= '0';
+    public $page_tooltip_logs_disabled				= '0';
+    public $page_tooltip_tools_disabled			= '0';
+    public $page_tooltip_config_disabled			= '0';
+    
     /**
-     * Get the version
+     * Returns the query
+     * @return string The query to be used to retrieve the rows from the database
      */
-    public static function getVersion()
+    public function _buildQuery()
     {
-        return self::$_version;
-    }
-
-    /**
-     * Get the copyright year
-     */
-    public static function getCopyrightYear()
-    {
-        return self::$_copyrightyear;
-    }
-
-    /**
-     * Get the Name
-     */
-    public static function getName()
-    {
-        return self::$_name;
+        $query = "SELECT * FROM #__synk_config";
+        return $query;
     }
     
-	/**
-     * Get the URL to the folder containing all media assets
+    /**
+     * Get component config
      *
-     * @param string	$type	The type of URL to return, default 'media'
-     * @return 	string	URL
+     * @acces	public
+     * @return	object
      */
-    public static function getURL($type = 'media')
+    public static function getInstance()
     {
-    	$url = '';
-    	
-    	switch($type) 
-    	{
-    		case 'media' :
-    			$url = JURI::root(true).'/media/com_synk/';
-    			break;
-    		case 'css' :
-    			$url = JURI::root(true).'/media/com_synk/css/';
-    			break;
-    		case 'images' :
-    			$url = JURI::root(true).'/media/com_synk/images/';
-    			break;
-    		case 'js' :
-    			$url = JURI::root(true).'/media/com_synk/js/';
-    			break;			
-    	}
-    	
-    	return $url;
+        static $instance;
+    
+        if (!is_object($instance)) {
+            $instance = new Synk();
+        }
+    
+        return $instance;
     }
     
-	/**
-     * Get the path to the folder containing all media assets
+    /**
+     * Intelligently loads instances of classes in framework
      *
-     * @param 	string	$type	The type of path to return, default 'media'
-     * @return 	string	Path
+     * Usage: $object = Synk::getClass( 'SynkHelperCarts', 'helpers.carts' );
+     * Usage: $suffix = Synk::getClass( 'SynkHelperCarts', 'helpers.carts' )->getSuffix();
+     * Usage: $categories = Synk::getClass( 'SynkSelect', 'select' )->category( $selected );
+     *
+     * @param string $classname   The class name
+     * @param string $filepath    The filepath ( dot notation )
+     * @param array  $options
+     * @return object of requested class (if possible), else a new JObject
      */
-    public static function getPath($type = 'media')
+    public static function getClass( $classname, $filepath='controller', $options=array( 'site'=>'admin', 'type'=>'components', 'ext'=>'com_synk' )  )
     {
-    	$path = '';
-    	
-    	switch($type) 
-    	{
-    		case 'media' :
-    			$path = JPATH_SITE.DS.'media'.DS.'com_synk';
-    			break;
-    		case 'css' :
-    			$path = JPATH_SITE.DS.'media'.DS.'com_synk'.DS.'css';
-    			break;
-    		case 'images' :
-    			$path = JPATH_SITE.DS.'media'.DS.'com_synk'.DS.'images';
-    			break;
-    		case 'js' :
-    			$path = JPATH_SITE.DS.'media'.DS.'com_synk'.DS.'js';
-    			break;			
-    	}
-    	
-    	return $path;
+        return parent::getClass( $classname, $filepath, $options  );
     }
-	
-	/**
-	 * Method to dump the structure of a variable for debugging purposes
-	 *
-	 * @param	mixed	A variable
-	 * @param	boolean	True to ensure all characters are htmlsafe
-	 * @return	string
-	 * @since	1.5
-	 * @static
-	 */
-	function dump( &$var, $htmlSafe = true ) {
-		$result = print_r( $var, true );
-		return '<pre>'.( $htmlSafe ? htmlspecialchars( $result ) : $result).'</pre>';
-	}	
+    
+    /**
+     * Method to intelligently load class files in the framework
+     *
+     * @param string $classname   The class name
+     * @param string $filepath    The filepath ( dot notation )
+     * @param array  $options
+     * @return boolean
+     */
+    public static function load( $classname, $filepath='controller', $options=array( 'site'=>'admin', 'type'=>'components', 'ext'=>'com_synk' ) )
+    {
+        return parent::load( $classname, $filepath, $options  );
+    }
 }
 
-	// TODO Merge this class into base defines
-class SynkConfig extends Synk 
-{
-	
-	var $show_linkback							= '1';
-	var $page_tooltip_dashboard_disabled		= '0';
-	var $page_tooltip_synchronizations_disabled = '0';
-	var $page_tooltip_databases_disabled		= '0';
-	var $page_tooltip_events_disabled			= '0';
-	var $page_tooltip_logs_disabled				= '0';
-	var $page_tooltip_tools_disabled			= '0';
-	var $page_tooltip_config_disabled			= '0';
-	
-	
-		
-	/**
-	 * constructor
-	 * @return void
-	 */
-	function __construct() {
-		parent::__construct();
-		
-		$this->setVariables();
-	}
-
-	/**
-	 * Returns the query
-	 * @return string The query to be used to retrieve the rows from the database
-	 */
-	function _buildQuery() 
-	{
-		$query = "SELECT * FROM #__synk_config";	
-		return $query;
-	}
-	
-	/**
-	 * Retrieves the data
-	 * @return array Array of objects containing the data from the database
-	 */
-	function getData() {
-		// load the data if it doesn't already exist
-		if (empty( $this->_data )) {
-			$database = &JFactory::getDBO();
-			$query = $this->_buildQuery();
-			$database->setQuery( $query );
-			$this->_data = $database->loadObjectList();
-		}
-		
-		return $this->_data;
-	}
-
-	/**
-	 * Set Variables
-	 *
-	 * @acces	public
-	 * @return	object
-	 */
-	function setVariables() {
-		$success = false;
-		
-		if ( $data = $this->getData() ) {
-			for ($i=0; $i<count($data); $i++) {
-				$title = $data[$i]->title;
-				$value = $data[$i]->value;
-				if (isset($title)) {
-					$this->$title = $value;
-				}
-			}
-			
-			$success = true;
-		}
-		
-		return $success;
-	}	
-
-	/**
-	 * Get component config
-	 *
-	 * @acces	public
-	 * @return	object
-	 */
-	function &getInstance() {
-		static $instance;
-
-		if (!is_object($instance)) {
-			$instance = new SynkConfig();
-		}
-
-		return $instance;
-	}
-
-	/**
-	 * 
-	 * @return unknown_type
-	 */
-	function &getFromXML( $needle='version' ) 
-	{
-		jimport('joomla.filesystem.file');
-		jimport('joomla.filesystem.folder');
-		jimport('joomla.filesystem.archive');
-		jimport('joomla.filesystem.path');
-		jimport('joomla.installer.installer' );
-		jimport('joomla.installer.helper' );
-		
-		$success = "1.50";
-		$pkg = strtolower( "com_Synk" );
-		// $row = new JObject();
-		
-		/* Get the component base directory */
-		$adminDir = JPATH_ADMINISTRATOR .DS. 'components';
-		$siteDir = JPATH_SITE .DS. 'components';
-
-		/* Get the component folder and list of xml files in folder */
-		$folder = $adminDir.DS.$pkg;
-		if (JFolder::exists($folder)) {
-			$xmlFilesInDir = JFolder::files($folder, '.xml$');
-		} else {
-			$folder = $siteDir.DS.$pkg;
-			if (JFolder::exists($folder)) {
-				$xmlFilesInDir = JFolder::files($folder, '.xml$');
-			} else {
-				$xmlFilesInDir = null;
-			}
-		}
-
-		//if there were any xml files found
-		if (count($xmlFilesInDir))
-		{
-			foreach ($xmlFilesInDir as $xmlfile)
-			{
-
-				if ($data = JApplicationHelper::parseXMLInstallFile($folder.DS.$xmlfile)) {
-					foreach($data as $key => $value) {
-						// $row->$key = $value;
-						if (strtolower($key) == strtolower($needle)) {
-							$success = $value;
-						}
-					}
-				}
-			}
-		}
-
-		return $success;
-	}
-	
-	/**
-	 * 
-	 * @param $fieldname
-	 * @return unknown_type
-	 */
-	function getFieldname( $fieldname, $option='', $view='', $layout='' )
-	{
-		// use combo of option, view, and layout to find specific variable	
-		$o = $option ? $option : strtolower( "com_Synk" );
-		$v = $view ? $view : JRequest::getVar( 'view', 'default' );
-		$l = $layout ? $layout : JRequest::getVar( 'layout', 'default' );
-		$return = "{$o}_{$v}_{$l}_{$fieldname}";
-		return $return;
-	}
-}
 ?>
