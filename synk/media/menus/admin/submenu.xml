@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<menu>	
+   <link>
+       <name>Synchronizations</name>
+       <url>index.php?option=com_synk&#38;view=synchronizations</url>
+   </link>
+   <link>
+       <name>Databases</name>
+       <url>index.php?option=com_synk&#38;view=databases</url>
+   </link>
+   <link>
+       <name>Events</name>
+       <url>index.php?option=com_synk&#38;view=events</url>
+   </link>
+   <link>
+       <name>Logs</name>
+       <url>index.php?option=com_synk&#38;view=logs</url>
+   </link>
+   <link>
+       <name>Configuration</name>
+       <url>index.php?option=com_synk&#38;view=config</url>
+   </link>
+</menu>
