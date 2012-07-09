@@ -1,11 +1,12 @@
 <?php defined('_JEXEC') or die('Restricted access'); ?>
 
 	<?php
+	    $defines = Synk::getInstance();
 		$img_file = "dioscouri_logo_transparent.png";
 		$img_path = "../media/com_synk/images";
 
 		$url = "http://www.dioscouri.com/";
-		if ($amigosid = Synk::getInstance()->get( 'amigosid', '' ))
+		if ($amigosid = $defines->get( 'amigosid', '' ))
 		{
 			$url .= "?amigosid=".$amigosid;
 		}
@@ -22,11 +23,11 @@
 			<a href="http://extensions.joomla.org/extensions/owner/dioscouri" target="_blank"><?php echo JText::_( "Leave JED Feedback" ); ?></a>
 		</td>
 		<td style="text-align: center; width: 33%;">
-			<?php echo JText::_( "Synk" ); ?>: <?php echo JText::_( "Synk Desc" ); ?>
+			<?php echo JText::_( "Synk" ); ?>: <?php echo JText::_( "COM_SYNK_DESC" ); ?>
 			<br/>
-			<?php echo JText::_( "Copyright" ); ?>: <?php echo Synk::getCopyrightYear(); ?> &copy; <a href="<?php echo $url; ?>" target="_blank">Dioscouri Design</a>
+			<?php echo JText::_( "Copyright" ); ?>: <?php echo $defines->getCopyrightYear(); ?> &copy; <a href="<?php echo $url; ?>" target="_blank">Dioscouri Design</a>
 			<br/>
-			<?php echo JText::_( "Version" ); ?>: <?php echo Synk::getVersion(); ?>
+			<?php echo JText::_( "Version" ); ?>: <?php echo $defines->getVersion(); ?>
 		</td>
 		<td style="text-align: right; width: 33%;">
 			<a href="<?php echo $url; ?>" target="_blank"><img src="<?php echo $img_path."/".$img_file;?>"></img></a>

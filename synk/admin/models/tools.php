@@ -11,7 +11,7 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-JLoader::import( 'com_synk.models._base', JPATH_ADMINISTRATOR.DS.'components' );
+Synk::load( 'SynkModelBase', 'models.base' );
 
 class SynkModelTools extends SynkModelBase 
 {	
@@ -34,10 +34,10 @@ class SynkModelTools extends SynkModelBase
 		$query->where("LOWER(tbl.folder) = 'synk'");
     }
     	
-	public function getList()
+	public function getList($refresh = false)
 	{
-		$list = parent::getList();
-		if(empty($list)) return array();
+		$list = parent::getList($refresh);
+		if(empty($list)) { return array(); }
 		
 		foreach(@$list as $item)
 		{

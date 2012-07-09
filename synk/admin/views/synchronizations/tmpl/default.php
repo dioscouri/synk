@@ -1,5 +1,5 @@
 <?php defined('_JEXEC') or die('Restricted access');
-JHTML::_('script', Synk::getName().'.js', 'media/com_synk/js/');
+JHTML::_('script', 'common.js', 'media/com_synk/js/');
 JHTML::_('behavior.modal');
 $state = @$this->state;
 $form = @$this->form;

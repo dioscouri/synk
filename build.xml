@@ -112,106 +112,106 @@
 		
 		<!-- Content plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/content" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_content/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_content/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_content/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_content/languages/en-GB.*" />
 		</copy>
 		
 		<!-- ContentBatch plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_contentbatch/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_contentbatch/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_contentbatch/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_contentbatch/languages/en-GB.*" />
 		</copy>
 		
 		<!-- User plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/user" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_user/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_user/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_user/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_user/languages/en-GB.*" />
 		</copy>
 		
 		<!-- CB User plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/user" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_cb/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_cb/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_cb/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_cb/languages/en-GB.*" />
 		</copy>
 		
 		<!-- phpBB3 User plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/user" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_phpbb3/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_phpbb3/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_phpbb3/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_phpbb3/languages/en-GB.*" />
 		</copy>
 		
 		<!-- Eventlist plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_eventlist/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_eventlist/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_eventlist/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_eventlist/languages/en-GB.*" />
 		</copy>
 			
 		<!-- Weblinks plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_weblinks/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_weblinks/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_weblinks/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_weblinks/languages/en-GB.*" />
 		</copy>
 		
 		<!-- Sections plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_sections/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_sections/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_sections/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_sections/languages/en-GB.*" />
 		</copy>
 		
 		<!-- System plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_system/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_system/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_system/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_system/languages/en-GB.*" />
 		</copy>
 		
 		<!-- Eventlist plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/system" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_categories/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_categories/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_categories/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_categories/languages/en-GB.*" />
 		</copy>
 		
 		<!-- Usermeta plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/user" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_usermeta/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_usermeta/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_usermeta/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_usermeta/languages/en-GB.*" />
 		</copy>
 		
 		<!-- AmbraJomSocial plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/ambra" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_ambrajomsocial/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_ambrajomsocial/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_ambrajomsocial/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_ambrajomsocial/languages/en-GB.*" />
 		</copy>
 		
 		<!-- JomSocialAmbra plugin -->
 		<copy todir="${cfg.localhostRoot}/plugins/community" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_jomsocialambra/*.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_jomsocialambra/*.*" />
 		</copy>
 		<copy todir="${cfg.localhostRoot}/administrator/language/en-GB" overwrite="true">
-			<fileset file="${cfg.comDir}/synk_plugin_jomsocialambra/languages/en-GB.*" />
+			<fileset file="${cfg.comDir}/plugins/synk_plugin_jomsocialambra/languages/en-GB.*" />
 		</copy>
 		
 		

@@ -11,7 +11,7 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-JLoader::import( 'com_synk.models._base', JPATH_ADMINISTRATOR.DS.'components' );
+Synk::load( 'SynkModelBase', 'models.base' );
 
 class SynkModelDatabases extends SynkModelBase 
 {
@@ -102,9 +102,9 @@ class SynkModelDatabases extends SynkModelBase
 		$query->group("id");
 	}
 		
-	public function getList()
+	public function getList($refresh = false)
 	{
-		$list = parent::getList();
+		$list = parent::getList($refresh);
 		if(empty($list)) return array();
 		
 		foreach (@$list as $item)
@@ -113,7 +113,6 @@ class SynkModelDatabases extends SynkModelBase
 			$item->link_verify = JRoute::_( 'index.php?option=com_synk&controller=databases&task=verify&id='. $item->id );
 				
 			// get and set synchronizations list
-			require_once( JPATH_ADMINISTRATOR.DS.'components'.DS.'com_synk'.DS.'helpers'.DS.'databases.php' );
 			$synks = "";
 			$data = SynkHelperDatabases::getSynchronizations( $item->id, '0' );
 			foreach (@$data as $d)

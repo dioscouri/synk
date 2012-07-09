@@ -67,11 +67,6 @@ class SynkViewConfig extends SynkViewBase
 			$required->text = JText::_( 'Required' );
 			$required->image = "<img src='".JURI::root()."/media/com_synk/images/required_16.png' alt='{$required->text}'>";
 			$this->assign('required', $required );
-				
-		// The plugins Configuration
-			$pluginsConfig = SynkHelperTools::getPluginsConfig();
-		//print_r($pluginsConfig);
-			$this->assign('pluginsConfig', $pluginsConfig);
     }
     
 }

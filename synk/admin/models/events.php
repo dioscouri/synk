@@ -11,7 +11,7 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-JLoader::import( 'com_synk.models._base', JPATH_ADMINISTRATOR.DS.'components' );
+Synk::load( 'SynkModelBase', 'models.base' );
 
 class SynkModelEvents extends SynkModelBase 
 {
@@ -97,12 +97,10 @@ class SynkModelEvents extends SynkModelBase
 		$query->group("id");
 	}
 	
-	public function getList()
+	public function getList($refresh = false)
 	{
-        require_once( JPATH_ADMINISTRATOR.DS.'components'.DS.'com_synk'.DS.'helpers'.DS.'events.php' );
-        
-		$list = parent::getList();
-		if(empty($list)) return array();
+		$list = parent::getList($refresh);
+		if(empty($list)) { return array(); }
 		
 		foreach (@$list as $item)
 		{

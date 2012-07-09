@@ -55,35 +55,6 @@ class SynkControllerConfig extends SynkController
 			}
 		}
 		
-		// Remove the 'pid_num_' prefixes from the prefixes of the plugins' parameters
-		$plugin_params = array();
-		foreach (@$_POST['params'] as $key => $val)
-		{
-			if (preg_match('/^pid_(\d+)_(.*)/', $key, $matches))
-			{
-				$plugin_params[$matches[1]][$matches[2]] = $val; 
-			}
-		}
-		
-		// Save plugins parameters in the DB
-		$database = JFactory::getDBO();
-		foreach (@$plugin_params as $plg_id => $params_arr)
-		{
-			$query = "SELECT `params` FROM `#__plugins` WHERE `id` = '$plg_id'";
-			$database->setQuery($query);
-			$jparams = new JParameter($database->loadObject()->params);
-			
-			foreach (@$params_arr as $param => $val) { $jparams->set($param, $val); }
-			
-			$query = "UPDATE `#__plugins` SET `params`= '".$jparams->toString()."' WHERE `id`= '$plg_id'";
-			$database->setQuery($query);
-			if (!$database->query())
-			{
-				$error = true;
-				$errorMsg .= $database->getErrorMsg();   
-			}
-		}
-		
 		if ( !$error ) 
 		{
 			$this->messagetype 	= 'message';

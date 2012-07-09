@@ -11,14 +11,12 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-JLoader::import( 'com_synk.models._base', JPATH_ADMINISTRATOR.DS.'components' );
+Synk::load( 'SynkModelBase', 'models.base' );
 
 class SynkModelDashboard extends SynkModelBase 
 {
-	function getTable()
+	function getTable($name='Config', $prefix='SynkTable', $options = array())
 	{
-		JTable::addIncludePath( JPATH_ADMINISTRATOR.DS.'components'.DS.'com_synk'.DS.'tables' );
-		$table = JTable::getInstance( 'Config', 'SynkTable' );
-		return $table;
+		return parent::getTable( $name, $prefix, $options );
 	}	
 }

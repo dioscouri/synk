@@ -11,7 +11,7 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-JLoader::import( 'com_synk.models._base', JPATH_ADMINISTRATOR.DS.'components' );
+Synk::load( 'SynkModelBase', 'models.base' );
 
 class SynkModelLogs extends SynkModelBase 
 {
@@ -137,12 +137,5 @@ class SynkModelLogs extends SynkModelBase
 		
 		$query->select( $this->getState( 'select', 'tbl.*' ) );		
 		$query->select( $field );
-	}
-	
-	public function getList()
-	{
-		$list = parent::getList(); 
-
-		return $list;
 	}
 }

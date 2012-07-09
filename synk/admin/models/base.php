@@ -13,4 +13,9 @@ defined('_JEXEC') or die('Restricted access');
 
 class SynkModelBase extends DSCModel
 {
+    public function getTable($name='', $prefix='SynkTable', $options = array())
+    {
+        JTable::addIncludePath( JPATH_ADMINISTRATOR . '/components/com_synk/tables' );
+        return parent::getTable($name, $prefix, $options);
+    }
 }

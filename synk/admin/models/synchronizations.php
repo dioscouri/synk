@@ -11,7 +11,7 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-JLoader::import( 'com_synk.models._base', JPATH_ADMINISTRATOR.DS.'components' );
+Synk::load( 'SynkModelBase', 'models.base' );
 
 class SynkModelSynchronizations extends SynkModelBase 
 {
@@ -103,10 +103,10 @@ class SynkModelSynchronizations extends SynkModelBase
         $query->group('tbl.id');
     }
     
-	public function getList()
+	public function getList($refresh = false)
 	{ 
-		$list = parent::getList();
-		if(empty($list)) return array();
+		$list = parent::getList($refresh = false);
+		if(empty($list)) { return array(); }
 		
 		foreach (@$list as $item)
 		{

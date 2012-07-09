@@ -4,11 +4,10 @@ defined('_JEXEC') or die('Restricted access');
 
 JHTML::_("behavior.mootools");
 JHTML::_("behavior.tooltip");
-JHTML::_('script', Synk::getName().'.js', 'media/com_synk/js/');
+JHTML::_('script', 'common.js', 'media/com_synk/js/');
 
 $form = @$this->form;
 $row = @$this->row;
-$pluginsConfig = @$this->pluginsConfig;
 ?>
 
 <form action="<?php echo JRoute::_( @$form['action'] )?>" method="post" name="adminForm" enctype="multipart/form-data">
@@ -97,16 +96,6 @@ $pluginsConfig = @$this->pluginsConfig;
 					<?php	
 					echo $this->sliders->endPanel();
 					
-					// Plugins Settings
-					foreach($pluginsConfig as $plgCfg)
-					{
-						if (trim($html = $plgCfg['jparam']->render()) == '') continue;
-						
-						echo $this->sliders->startPanel( JText::_($plgCfg['name']), $plgCfg['name'] ).
-							$html.
-							$this->sliders->endPanel();
-					}
-						
 					// if there are plugins, display them accordingly
 	                if ($this->items_sliders) 
 	                {               	

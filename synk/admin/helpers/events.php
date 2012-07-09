@@ -11,7 +11,7 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( JPATH_ADMINISTRATOR.DS.'components'.DS.'com_synk'.DS.'helpers'.DS.'_base.php' );
+Synk::load( 'SynkHelperBase', 'helpers.base' );
 
 class SynkHelperEvents extends SynkHelperBase
 {
@@ -19,7 +19,7 @@ class SynkHelperEvents extends SynkHelperBase
 	 * 
 	 * @return 
 	 */
-	function getType( $id ) 
+	public static function getType( $id ) 
 	{
 		switch( $id )
 		{
@@ -41,7 +41,7 @@ class SynkHelperEvents extends SynkHelperBase
 	 * 
 	 * @return 
 	 */
-	function getTypes() 
+	public static function getTypes() 
 	{
 		static $items;
 		
@@ -62,9 +62,9 @@ class SynkHelperEvents extends SynkHelperBase
 	 * @return 
 	 * @param object $id
 	 */
-	function getSynchronizations( $id, $published='1' )
+	public static function getSynchronizations( $id, $published='1' )
 	{
-		$database = &JFactory::getDBO();
+		$database = JFactory::getDBO();
 
 		$where = array();
 		$lists = array();

@@ -11,7 +11,7 @@
 /** ensure this file is being included by a parent file */
 defined('_JEXEC') or die('Restricted access');
 
-require_once( JPATH_ADMINISTRATOR.DS.'components'.DS.'com_synk'.DS.'helpers'.DS.'_base.php' );
+Synk::load( 'SynkHelperBase', 'helpers.base' );
 
 class pseudoJDatabase
 {
